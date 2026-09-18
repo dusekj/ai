@@ -8,7 +8,7 @@ Tento repozitář slouží Jakubovi ke studiu umělé inteligence a průběžné
 
 - Komunikuj a piš poznámky česky, s diakritikou. Běžné anglické odborné termíny zachovej a podle potřeby vysvětli.
 - Automaticky ukládej podstatné poznatky ze studijních konverzací do souborů `.md`. Uživatel nemusí o zápis zvlášť žádat.
-- Před závěrečnou odpovědí vytvoř nebo aktualizuj příslušné poznámky a automaticky commitni změny z daného úkolu. Toto je výslovné trvalé svolení ke commitování; nevyžaduj opakované potvrzení.
+- Před závěrečnou odpovědí vytvoř nebo aktualizuj příslušné poznámky, automaticky commitni změny z daného úkolu a ihned po každém commitu proveď push. Toto je výslovné trvalé svolení ke commitování i pushování; nevyžaduj opakované potvrzení.
 - Čistě organizační zprávy či potvrzení nevyžadují studijní poznámku. Pokud nevznikla žádná změna, nevytvářej prázdný commit.
 - Novější výslovné pokyny uživatele mají přednost před těmito pravidly.
 
@@ -39,7 +39,8 @@ Zapisuj užitečnou syntézu, ne doslovný přepis chatu. Zachovej důležité o
 - Na začátku zkontroluj stav repozitáře. Zachovej existující uživatelské změny a nezahrnuj nesouvisející úpravy do svého commitu.
 - Před commitem zkontroluj obsah změn, Markdown, relativní odkazy a případné nechtěně zahrnuté citlivé údaje. Přidávej do commitu konkrétní soubory nebo změny související s úkolem.
 - Vytvářej stručné, výstižné commit zprávy, například `docs: doplnit poznámky k transformerům`.
-- Automatické commitování znamená lokální commit. Push do vzdáleného repozitáře prováděj pouze na pokyn uživatele.
+- Po každém commitu automaticky proveď push aktuální větve do jejího nakonfigurovaného vzdáleného repozitáře. Pokud chybí upstream a cíl je jednoznačný, nastav jej při pushi.
 - Nepřepisuj historii ani nemaž nesouvisející práci. Neukládej přístupové údaje a tajné klíče.
 - Pokud commit selže, pokus se odstranit běžnou příčinu bez destruktivních zásahů. Nevymýšlej identitu autora; chybějící konfiguraci pravdivě oznam a poznámky ponech uložené.
-- V závěrečné odpovědi stručně uveď, kam byly poznámky uloženy a hash vytvořeného commitu, případně důvod, proč commit nevznikl.
+- Pokud push selže, pokus se odstranit běžnou příčinu bez přepisování historie a bez force push. Nevyřešenou překážku pravdivě oznam; lokální commit zachovej.
+- V závěrečné odpovědi stručně uveď, kam byly poznámky uloženy, hash vytvořeného commitu a výsledek pushe, případně důvod, proč commit nebo push neproběhl.
