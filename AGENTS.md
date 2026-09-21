@@ -15,9 +15,9 @@ Tento repozitář slouží Jakubovi ke studiu umělé inteligence a průběžné
 ## Organizace poznámek
 
 - `README.md`: základní popis projektu a odkaz na přehled poznámek.
-- `poznamky/README.md`: průběžně aktualizovaný tematický rozcestník.
-- `poznamky/<tema>.md`: poznámky k jednotlivým tématům; podadresáře zaváděj až podle potřeby.
-- Názvy souborů piš malými písmeny bez diakritiky a s pomlčkami. Soubory ukládej v UTF-8.
+- `notes/README.md`: průběžně aktualizovaný tematický rozcestník.
+- `notes/<topic>.md`: poznámky k jednotlivým tématům; podadresáře zaváděj až podle potřeby.
+- Názvy všech adresářů a souborů piš vždy anglicky. Používej malá písmena bez diakritiky a pomlčky; standardní názvy jako `AGENTS.md` a `README.md` zachovej. Komunikace i obsah poznámek zůstávají v češtině. Soubory ukládej v UTF-8.
 - Před zápisem prohlédni rozcestník a relevantní existující poznámky. Navazuj na ně a omez duplicity; související témata propojuj relativními odkazy.
 
 ## Podoba studijní poznámky
