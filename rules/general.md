@@ -1,7 +1,7 @@
 # Obecná pravidla pro práci agenta
 
 ID: general
-Verze: 2.0.0
+Verze: 2.1.0
 Aktualizováno: 2026-09-21
 Platnost: všechny projekty, které tato pravidla načítají.
 
@@ -20,6 +20,7 @@ Platnost: všechny projekty, které tato pravidla načítají.
 - Zavedené konvence projektu dodržuj tam, kde nejsou v rozporu s platnými pravidly. Historické použití samo o sobě není výjimkou z pravidel.
 - Při úpravě souboru zkontroluj celý tento soubor vůči všem použitelným pravidlům a oprav i historická porušení, nejen právě měněné řádky. Nový kód ani kontroly nepřizpůsobuj historicky nesprávnému použití; sjednoť soubor podle pravidel.
 - Sjednocení upravovaného souboru podle pravidel je součástí úkolu. Aktualizuj také související odkazy a volání, pokud to oprava vyžaduje, a ověř zachování funkčnosti. Bez dalšího zadání nerozšiřuj sjednocování na nesouvisející soubory a nepřidávej nesouvisející refaktoring, závislosti ani změny veřejného rozhraní. Pokud se požadované sjednocení střetne s těmito omezeními, konkrétní konflikt oznam místo tichého vynechání pravidla.
+- Generovaný kód nikdy neupravuj ručně. Jde o soubory vznikající z jiného zdroje, například ze šablon, schémat, návrhářů, OpenAPI specifikací, ORM nástrojů nebo generátorů kódu; poznáš je typicky podle hlavičky o automatickém vygenerování, přípony nebo konfigurace generátoru. Potřebnou změnu proveď ve zdroji generování a výstup znovu vygeneruj. Pokud přegenerování neumíš spustit nebo to prostředí neumožňuje, popiš potřebnou změnu zdroje a vyzvi uživatele, aby přegenerování provedl sám; ruční zásah do výstupu neprováděj ani jako dočasné řešení.
 - Při opravě chyby ověř původně selhávající scénář. Vol kontroly přiměřené dopadu změny a používej existující projektové postupy.
 - Rozlišuj provedené kontroly od předpokladů. V závěru stručně popiš výsledek, ověření a případné nevyřešené překážky; netvrď úspěch bez důkazu.
 - Tato sdílená pravidla jsou výchozí. Konkrétní projektové a aktuální uživatelské pokyny je mohou upřesnit; respektuj hierarchii instrukcí nástroje.
