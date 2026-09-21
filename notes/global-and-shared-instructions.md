@@ -44,4 +44,28 @@ Claude Code nově podporuje přímo projektové AGENTS.md (dle aktuální dokume
 
 Textová pravidla nezaručují bezchybné dodržení. Pro opakované chyby je vhodné podle jejich povahy doplnit automatickou kontrolu. Nejprve sepsat konkrétní příklady chyb, potom rozhodnout, co patří mezi globální preference a co do projektu či kontrol.
 
+## Kolik omezení dává smysl
+
+Sdílené pokyny jsou vhodný směr pro zachování zkušeností napříč projekty. Cílem je přesně popsat důležité požadavky a kontext; maximalizovat počet omezení není užitečný cíl. Stručné instrukce založené na skutečných opakovaných problémech doporučují [OpenAI](https://learn.chatgpt.com/guides/best-practices) i [Anthropic](https://code.claude.com/docs/en/best-practices). Dlouhé, rozporné a nerelevantní instrukce mohou snižovat jejich účinnost.
+
+Doporučení asistenta pro Jakubův postup:
+
+- Do společných pravidel ukládat stabilní preference a skutečně opakované chyby, které mají stejný význam ve více projektech.
+- Projektová rozhodnutí, například konkrétní architekturu, ponechat v projektu. U pravidel závislých na situaci uvést podmínku a případné výjimky.
+- U jednotlivého úkolu definovat očekávané chování, hranice změny a způsob ověření. Volbu běžných implementačních detailů nechat agentovi, pokud pro omezení není konkrétní důvod.
+- Rozlišovat instrukci, kontrolu a oprávnění: text říká, co má agent dělat; test či analyzátor ověřuje vybranou vlastnost; oprávnění nástroje skutečně omezují dostupné akce.
+- Pravidla přidávat a upravovat podle výsledků. U opakované chyby nejprve určit, zda chybělo zadání, kontext, ověření, nebo zda nástroj ignoroval již existující instrukci.
+
+| Potřeba | Vhodné místo |
+| --- | --- |
+| Trvalá preference, například jazyk komunikace | Sdílené instrukce |
+| Specifické omezení projektu | Projektové instrukce |
+| Očekávané chování funkce | Zadání a odpovídající test |
+| Mechanicky zjistitelná chyba | Automatická kontrola, případně stručné vysvětlení v instrukcích |
+| Opakovaný pracovní postup | Skill nebo skript |
+
+Příklad navrženého pravidla: „Při opravě chyby zachovej veřejné rozhraní, pokud jeho změna není součástí zadání; ověř původně selhávající scénář.“ Naopak požadavek vytvářet rozhraní pro každou třídu bez ohledu na projekt by zbytečně předepisoval implementaci. Jde o ilustrační návrhy, nikoli nově zavedená pravidla.
+
+První praktický krok: zpracovat několik konkrétních chyb z minulých C# úkolů a pro každou vybrat nejmenší účinné opatření. Úspěch posuzovat podle menšího počtu opakovaných chyb a lidských oprav, nikoli podle délky instrukčního souboru.
+
 Související: [Cesta k přesnějším a autonomnějším agentům](path-to-reliable-autonomous-agents.md).
