@@ -6,7 +6,7 @@ Zdroje ověřeny: 2026-09-21
 
 ## Potřeba
 
-Jakub chce definovat opakující se pravidla jednou a používat je ve všech projektech, například při práci v C#. Preferuje společný obsah přímo v tomto repozitáři a odkazy z instrukčních souborů ostatních projektů. Konkrétní opakované chyby zatím nevyjmenoval.
+Jakub chce definovat opakující se pravidla jednou a používat je ve všech projektech, například při práci v C#. Preferuje společný obsah přímo v tomto repozitáři a odkazy z instrukčních souborů ostatních projektů. Postupně doplňuje konkrétní požadavky na pojmenování a dokumentaci C# kódu.
 
 ## Globální pokyny v Codexu
 
@@ -53,6 +53,8 @@ Textová pravidla nezaručují bezchybné dodržení. Pro opakované chyby je vh
 Jakub stanovil, že při úpravě souboru se mají v celém souboru opravit i historická porušení všech použitelných pravidel. Nový kód se nesmí přizpůsobovat nesprávné historické konvenci. Součástí opravy je aktualizace souvisejících použití a ověření funkčnosti; nejde o zadání k plošnému přepracování nesouvisejících souborů. Tato změna rozsahu práce je zapsána v `general` verze 2.0.0.
 
 První konkrétní C# pravidlo vyžaduje PascalCase pro všechny privátní metody, například `LoadSettings`. Platí i pro historické metody v upravovaném souboru a jejich související použití. Je zapsáno v `csharp` verze 1.1.0.
+
+Od verze `csharp` 1.2.0 musí hlavičkové komentáře metod a vlastností používat platnou XML dokumentaci C# s `///` a příslušnými značkami, nikoli zjednodušené `//`. Historické hlavičkové komentáře v celém upravovaném souboru se převádějí se zachováním významu. Běžné komentáře uvnitř implementace tím nejsou dotčeny.
 
 ### Obecná doporučení
 
