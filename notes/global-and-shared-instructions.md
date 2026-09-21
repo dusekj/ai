@@ -48,6 +48,14 @@ Textová pravidla nezaručují bezchybné dodržení. Pro opakované chyby je vh
 
 ## Kolik omezení dává smysl
 
+### Přijatá pravidla pro historický kód
+
+Jakub stanovil, že při úpravě souboru se mají v celém souboru opravit i historická porušení všech použitelných pravidel. Nový kód se nesmí přizpůsobovat nesprávné historické konvenci. Součástí opravy je aktualizace souvisejících použití a ověření funkčnosti; nejde o zadání k plošnému přepracování nesouvisejících souborů. Tato změna rozsahu práce je zapsána v `general` verze 2.0.0.
+
+První konkrétní C# pravidlo vyžaduje PascalCase pro všechny privátní metody, například `LoadSettings`. Platí i pro historické metody v upravovaném souboru a jejich související použití. Je zapsáno v `csharp` verze 1.1.0.
+
+### Obecná doporučení
+
 Sdílené pokyny jsou vhodný směr pro zachování zkušeností napříč projekty. Cílem je přesně popsat důležité požadavky a kontext; maximalizovat počet omezení není užitečný cíl. Stručné instrukce založené na skutečných opakovaných problémech doporučují [OpenAI](https://learn.chatgpt.com/guides/best-practices) i [Anthropic](https://code.claude.com/docs/en/best-practices). Dlouhé, rozporné a nerelevantní instrukce mohou snižovat jejich účinnost.
 
 Doporučení asistenta pro Jakubův postup:
