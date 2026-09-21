@@ -2,7 +2,12 @@
 
 ## Sdílená pravidla
 
-Před první odpovědí načti a dodržuj [obecná pravidla](rules/general.md) a načti [pravidla C#/.NET](rules/csharp.md). Cesty jsou relativní ke kořeni tohoto repozitáře. V první odpovědi oznam skutečné verze a zdrojové cesty podle postupu v `rules/general.md`. C# pravidla používej pouze při práci v C#/.NET; jinak je označ jako načtená, ale nepoužitelná pro aktuální úkol. Pokud soubor nelze načíst, oznam to a nevymýšlej jeho verzi.
+Před první odpovědí načti a dodržuj pravidla ze souborů (cesty jsou relativní ke kořeni tohoto repozitáře, tedy k adresáři s tímto `AGENTS.md`):
+
+- `./rules/general.md` — obecná pravidla
+- `./rules/csharp.md` — pravidla C#/.NET
+
+V první odpovědi oznam skutečné verze a zdrojové cesty podle postupu v `./rules/general.md`. C# pravidla používej pouze při práci v C#/.NET; jinak je označ jako načtená, ale nepoužitelná pro aktuální úkol. Pokud soubor nelze načíst, oznam to a nevymýšlej jeho verzi.
 
 ## Účel projektu
 
