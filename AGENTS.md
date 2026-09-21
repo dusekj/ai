@@ -1,5 +1,9 @@
 # Pokyny pro práci v projektu AI
 
+## Sdílená pravidla
+
+Před první odpovědí načti a dodržuj [obecná pravidla](rules/general.md) a načti [pravidla C#/.NET](rules/csharp.md). Cesty jsou relativní ke kořeni tohoto repozitáře. V první odpovědi oznam skutečné verze a zdrojové cesty podle postupu v `rules/general.md`. C# pravidla používej pouze při práci v C#/.NET; jinak je označ jako načtená, ale nepoužitelná pro aktuální úkol. Pokud soubor nelze načíst, oznam to a nevymýšlej jeho verzi.
+
 ## Účel projektu
 
 Tento repozitář slouží Jakubovi ke studiu umělé inteligence a průběžného vývoje v oboru. Konverzace mohou pokrývat teorii, modely, nástroje, programování, praktické experimenty i širší souvislosti AI. Výsledkem má být postupně rostoucí, přehledná znalostní báze v Markdownu verzovaná v Gitu.

@@ -26,7 +26,9 @@ Návrh asistenta:
 | Sekce pro C#/.NET | Pravidla s výslovnou podmínkou, že se použijí při práci v C#/.NET |
 | Projektové pokyny | Architektura, výjimky a konkrétní příkazy daného projektu |
 
-Podle upřesněné preference udržovat společný obsah zde, například v `rules/general.md` a `rules/csharp.md`. Jde zatím o navržené cesty, soubory nebyly vytvořeny. Kořenové AGENTS.md tohoto repozitáře ponechat pro studijní projekt: jeho pravidla pro poznámky a automatický push nemají být bez rozmyslu přenesena do všech vývojových projektů.
+Společný obsah je nyní vytvořen v [rules/general.md](../rules/general.md) a [rules/csharp.md](../rules/csharp.md), každý s vlastní počáteční verzí 1.0.0. Kořenové AGENTS.md tohoto repozitáře na ně odkazuje. Jeho pravidla pro studijní poznámky a automatický push zůstávají specifická tomuto projektu.
+
+Na žádost Jakuba pravidla vyžadují oznámení skutečně načtených verzí a cest v první odpovědi nové konverzace. Agent načte oba soubory a odliší použití C# pravidel podle typu úkolu. Při změně obsahu se zvyšuje verze daného souboru. Hlášení je potvrzení agenta, nikoli záruka dodržení pravidel. [Návod k zapojení](../rules/README.md) obsahuje blok pro další projekty. Globální konfigurace a jiné repozitáře nebyly upraveny; načítání v nové relaci Codexu ani Claude Code zatím nebylo samostatným během ověřeno.
 
 V AGENTS.md ostatních projektů nebo v osobních globálních pokynech použít výslovný pokyn: „Před zahájením práce přečti a dodržuj společná pravidla v <cesta>. Při práci v C#/.NET přečti také <cesta k pravidlům C#>.“ Samotný Markdown odkaz není automatický import; agent musí cílový soubor skutečně otevřít. Nedostupnost souboru má oznámit. Osobní skill může být vhodný pro delší opakovaný postup.
 

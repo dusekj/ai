@@ -10,5 +10,6 @@ Podstatné poznatky z konverzací se průběžně ukládají jako strukturované
 
 - [Přehled studijních poznámek](notes/README.md)
 - [Trvalé pokyny pro asistenta](AGENTS.md)
+- [Sdílená pravidla pro vývoj a jejich zapojení](rules/README.md)
 
 Založeno 2026-09-18.
