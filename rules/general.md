@@ -1,8 +1,8 @@
 # Obecná pravidla pro práci agenta
 
 ID: general
-Verze: 2.1.0
-Aktualizováno: 2026-09-21
+Verze: 2.2.0
+Aktualizováno: 2026-09-22
 Platnost: všechny projekty, které tato pravidla načítají.
 
 ## Načtení a oznámení verze
@@ -25,6 +25,13 @@ Platnost: všechny projekty, které tato pravidla načítají.
 - Rozlišuj provedené kontroly od předpokladů. V závěru stručně popiš výsledek, ověření a případné nevyřešené překážky; netvrď úspěch bez důkazu.
 - Tato sdílená pravidla jsou výchozí. Konkrétní projektové a aktuální uživatelské pokyny je mohou upřesnit; respektuj hierarchii instrukcí nástroje.
 - Commitování, push, jazyk obsahu a projektové názvosloví řiď pokyny konkrétního projektu nebo uživatele. Tento soubor sám nezavádí automatický commit ani push.
+
+## Výkon a jednoduchost kódu
+
+- Výkon posuzuj vždy při návrhu, implementaci i kontrole změn. Aktivně odstraňuj zbytečnou práci, zejména opakované databázové a síťové operace, I/O, výpočty a alokace.
+- Sleduj celý průchod operace včetně volaných metod. Pokud lze při zachování správnosti provést jednu databázovou aktualizaci místo dvou, připrav výsledný stav a ulož jej jednou. Nevytvářej mezikroky se zápisem, opakované načítání ani duplicitní volání bez konkrétního důvodu; zachovej požadovanou transakčnost, souběžnost a vedlejší účinky.
+- Změnu, která současně zlepšuje výkon a zjednodušuje kód při zachování požadovaného chování, proveď rovnou v rámci řešeného úkolu. Neodkládej ji jako předčasnou optimalizaci a nevyžaduj kvůli ní další schválení.
+- U optimalizací, které přidávají složitost nebo mají nejistý přínos, ověř dopad vhodným měřením. Při kontrole výsledku ověř také počet nákladných operací, pokud je pro změnu podstatný; samotná funkční správnost nestačí k odhalení zbytečné práce.
 
 ## Údržba
 
