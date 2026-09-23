@@ -97,6 +97,28 @@ Zásada: **každá opakovaná ruční oprava by se měla změnit v pravidlo, tes
 
 Doporučené pořadí: jeden agent + plán + automatické ověření → potom jeden krok review (např. `/code-review` v Claude Code) → více agentů až pro skutečně paralelní nezávislé úlohy nebo široký průzkum. Odpovídá to krokům 7 a 9 v tabulce výše. Související: [Harness u AI agentů](agent-harness.md).
 
+### Lokální paralelní běh vs. agent na pozadí
+
+Jakubův současný postup (2026-09-23): zadání ladí v několika iteracích, pak úkol předá agentovi, ten běží přibližně 30–40 minut a Jakub mezitím pracuje na jiném úkolu, případně souběžně s dalšími lokálními relacemi Claude Code. Poté výsledek kontroluje.
+
+Závěr diskuse: tento postup už je **ohraničená autonomie** (krok 8 v tabulce výše). Přesun agenta na server nebo do cloudu sám o sobě kvalitu ani rychlost nezvýší. Úzkým hrdlem je čas na kontrolu výsledků, ne místo, kde agent běží.
+
+Agent běžící mimo vlastní počítač dává smysl hlavně tehdy, když:
+
+- práci spouští **událost bez účasti člověka**: plán (cron), pád CI, nové issue, komentář v review,
+- má běžet, i když je počítač vypnutý nebo uživatel pryč,
+- je potřeba **izolace**: sandbox, kde lze agentovi povolit víc bez rizika pro vlastní stroj,
+- lokální výkon nebo počet souběžných úloh nestačí,
+- s agentem pracuje celý tým (sdílené spouštění a výsledky).
+
+U lokálního paralelního běhu se vyplatí:
+
+- oddělit souběžné úlohy do **git worktree** nebo samostatných větví, aby si agenti nepřepisovali soubory,
+- chtít na konci **podklady pro rychlou kontrolu**: co se změnilo a proč, které kontroly proběhly s jakým výsledkem, rizika a otevřené otázky,
+- nechat agenta před předáním udělat vlastní review (např. `/code-review`),
+- nastavit notifikaci o dokončení,
+- počet paralelních úloh přizpůsobit tomu, kolik jich člověk stihne kvalitně zkontrolovat.
+
 ## Doporučený první experiment
 
 Na jednom existujícím vývojovém projektu zkusit kroky 1–3: instrukce projektu, konkrétní kritéria přijetí jedné malé změny a funkční kontrolu výsledku. Zaznamenat, kolikrát bylo nutné zasáhnout, z jaké příčiny podle tabulky výše a jaké chyby unikly kontrolám. Teprve opakující se úspěšný postup převést do skillu a automatizovat.
