@@ -1,7 +1,7 @@
 # Cesta k přesnějším a autonomnějším AI agentům
 
 Vytvořeno: 2026-09-18
-Aktualizováno: 2026-09-18
+Aktualizováno: 2026-09-23
 Aktuálnost zdrojů ověřena: 2026-09-18
 
 ## Výchozí stav
@@ -50,9 +50,56 @@ Pro první samostatný běh doporučuji malou opravu s reprodukovatelnou chybou 
 
 Oddělený reviewer může mít čerstvý kontext, ale stále může sdílet stejné omyly jako autor. Více agentů je vhodné tam, kde jde práci rozdělit a výsledky spolehlivě ověřit. Zvyšuje nároky na koordinaci i cenu. Začínat jednoduchým workflow a přidávat složitost až podle pozorovaných nedostatků odpovídá doporučení Anthropic. [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents)
 
+## Kdy agenta použít a proč výsledky stále opravuji
+
+Jakub uvedl (2026-09-23), že zatím vždy musel výsledek agenta opravit, ručně nebo dalším příkazem, a plně autonomní vývoj kódu mu proto zatím připadá nereálný.
+
+### Realistický cíl
+
+Cílem není nulový počet oprav, ale **levnější opravy**: méně, dříve odhalené a menší. I pull request zkušeného vývojáře obvykle dostane připomínky. Rozumná meta je „agent samostatně dokončí vymezený úkol, člověk dělá review“, ne „agent vyvíjí bez dohledu“. (Interpretace asistenta.)
+
+### Vhodné a nevhodné scénáře
+
+Agent se hodí, když je úkol **dobře zadaný, ověřitelný, lokální a s nízkým rizikem**:
+
+- oprava chyby, kterou lze reprodukovat testem,
+- doplnění testů k existujícímu kódu,
+- mechanické změny: přejmenování, migrace API nebo verze knihovny, sjednocení podle pravidel,
+- nový kód podle existujícího vzoru v projektu (další endpoint, další entita),
+- průzkum a vysvětlení neznámého kódu, hledání příčiny chyby, analýza logů,
+- jednorázové skripty a nástroje, dokumentace,
+- druhý pohled při code review.
+
+Méně vhodné: nejasné zadání, architektonická rozhodnutí, úkoly závislé na nezapsaných znalostech (doménová pravidla, zvyklosti týmu), vizuální vkus v UI, rozsáhlé průřezové změny a bezpečnostně kritický kód bez důkladného review.
+
+### Diagnostika oprav
+
+U každé opravy je užitečné zapsat, **proč** byla nutná. Každá příčina má jiný lék:
+
+| Příčina opravy | Lék |
+| --- | --- |
+| Agent špatně pochopil zadání | Nejprve plán (plan mode) a jeho schválení před psaním kódu; nechat agenta klást otázky; konkrétní příklady a kritéria přijetí |
+| Porušil konvence a styl | Převést opakovanou připomínku do pravidla (`rules/`, AGENTS.md), případně do analyzátoru nebo hooku |
+| Funkční chyba | Dát agentovi možnost ověření: test reprodukující chybu, build, spuštění aplikace; hotovo až po úspěšné kontrole |
+| Nedotažená práce | Explicitní definice hotového stavu (definition of done) a kontrolní seznam |
+| Chybějící kontext | Odkázat na vzorový soubor, dokumentaci a doménová pravidla |
+| Příliš velký úkol | Rozdělit na menší kroky s mezikontrolou |
+
+Zásada: **každá opakovaná ruční oprava by se měla změnit v pravidlo, test nebo hook**, aby se neopakovala. Tímto způsobem vznikla i sdílená C# pravidla v [globálních pokynech](global-and-shared-instructions.md).
+
+### Pomůže více agentů, kteří si připomínkují práci?
+
+Částečně. Oddělený reviewer s čerstvým kontextem a konkrétním zadáním (hledej chyby vůči zadání, kontroluj pravidla) odhalí část chyb, které autor přehlédl. Ale:
+
+- Agenti na stejném modelu mívají **stejná slepá místa**. Chybí-li nebo je-li nejasná specifikace, shodnou se na stejné chybné interpretaci; review nenahradí chybějící zadání.
+- Volná „diskuse“ agentů zvyšuje cenu a šum a nemá deterministický výsledek.
+- Deterministická kontrola (test, build, analyzátor) je spolehlivější zpětná vazba než názor dalšího modelu.
+
+Doporučené pořadí: jeden agent + plán + automatické ověření → potom jeden krok review (např. `/code-review` v Claude Code) → více agentů až pro skutečně paralelní nezávislé úlohy nebo široký průzkum. Odpovídá to krokům 7 a 9 v tabulce výše. Související: [Harness u AI agentů](agent-harness.md).
+
 ## Doporučený první experiment
 
-Na jednom existujícím vývojovém projektu zkusit kroky 1–3: instrukce projektu, konkrétní kritéria přijetí jedné malé změny a funkční kontrolu výsledku. Zaznamenat, kolikrát bylo nutné zasáhnout a jaké chyby unikly kontrolám. Teprve opakující se úspěšný postup převést do skillu a automatizovat.
+Na jednom existujícím vývojovém projektu zkusit kroky 1–3: instrukce projektu, konkrétní kritéria přijetí jedné malé změny a funkční kontrolu výsledku. Zaznamenat, kolikrát bylo nutné zasáhnout, z jaké příčiny podle tabulky výše a jaké chyby unikly kontrolám. Teprve opakující se úspěšný postup převést do skillu a automatizovat.
 
 Vlastní vektorovou databázi/RAG, fine-tuning ani složitý multiagentní framework zatím nedoporučuji jako první investici. Jde o doporučení pro popsanou situaci, ne obecné odmítnutí těchto technik. Jejich potřeba by měla vycházet z konkrétního nedostatku a měření.
 
