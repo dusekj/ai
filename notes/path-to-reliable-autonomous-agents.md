@@ -1,7 +1,7 @@
 # Cesta k přesnějším a autonomnějším AI agentům
 
 Vytvořeno: 2026-09-18
-Aktualizováno: 2026-09-23
+Aktualizováno: 2026-09-25
 Aktuálnost zdrojů ověřena: 2026-09-18
 
 ## Výchozí stav
@@ -118,6 +118,24 @@ U lokálního paralelního běhu se vyplatí:
 - nechat agenta před předáním udělat vlastní review (např. `/code-review`),
 - nastavit notifikaci o dokončení,
 - počet paralelních úloh přizpůsobit tomu, kolik jich člověk stihne kvalitně zkontrolovat.
+
+### Další směr s největším přínosem (vyhodnocení 2026-09-25)
+
+Otázka: který směr rozvoje přinese teď nejvíc? Stav podle poznámek: pravidla a teorie jsou zpracované do šířky (sdílená pravidla, harness, hooky, grafy a workflow), ale zatím nejsou zaznamenaná **data z reálné práce** a žádná kontrola není vynucená strojově. Úzkým hrdlem je podle Jakubova popisu čas na kontrolu a opravy výsledků.
+
+Doporučení asistenta (interpretace, ne měřený výsledek): na 2–3 týdny přestat přidávat nová témata a zaměřit se na **zpětnovazební smyčku na jednom reálném C# projektu**.
+
+1. **Deník oprav.** U každého úkolu předaného agentovi zapsat 1 řádek: úkol, zda byla nutná oprava, příčina podle tabulky *Diagnostika oprav*, čas kontroly. Po ~10 úkolech je vidět, která příčina dominuje, a tedy kam investovat. Bez toho je výběr dalšího kroku odhad.
+2. **Mechanická pravidla převést z textu do buildu.** Co jde zkontrolovat nástrojem, nemá hlídat model ani reviewer. Build chybu ukáže agentovi hned, funguje stejně v Claude Code i Codexu i v CI a zmenšuje objem review:
+   - PascalCase privátních metod: pravidla pojmenování v `.editorconfig` (diagnostika IDE1006) se závažností `error` a `<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>` v projektu.
+   - XML dokumentace: `GenerateDocumentationFile` s varováním CS1591 pokrývá jen veřejně viditelné členy. Pro privátní metody a vlastnosti je potřeba analyzátor, např. StyleCop.Analyzers (SA1600) s volbou dokumentace privátních prvků ve `stylecop.json`.
+   - **Neověřeno v této konverzaci** — přesné názvy voleb a chování ověřit v aktuální dokumentaci a na konkrétním projektu.
+3. **Definice hotového stavu vynucená Stop hookem:** build a testy musí projít, agent předá krátký report pro kontrolu (co a proč změnil, jaké kontroly proběhly, rizika). Navazuje na náčrt v [Harness u AI agentů](agent-harness.md).
+4. **Až podle deníku** rozhodnout o dalším: dominuje-li nepochopení zadání → plan mode a šablona zadání (loop specification); funkční chyby → testy reprodukující chybu; opakovaný proces → skill nebo uložené workflow.
+
+Proč ne jiné směry teď: více agentů, grafy a běh na pozadí zvyšují objem výstupu, který je potřeba kontrolovat — tedy zatěžují právě úzké hrdlo. Dávají smysl, až bude kontrola levnější. RAG, fine-tuning nebo vlastní orchestrace přes SDK by měly vycházet z konkrétního nedostatku v deníku.
+
+Alternativa, pokud je cílem hlubší porozumění AI, ne produktivita ve vývoji: postavit malou vlastní aplikaci nad API modelu (tool use, agent loop, jednoduchý eval). Tuto preferenci Jakub zatím neupřesnil.
 
 ## Doporučený první experiment
 
