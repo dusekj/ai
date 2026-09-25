@@ -135,6 +135,8 @@ Doporučení asistenta (interpretace, ne měřený výsledek): na 2–3 týdny p
 
 Proč ne jiné směry teď: více agentů, grafy a běh na pozadí zvyšují objem výstupu, který je potřeba kontrolovat — tedy zatěžují právě úzké hrdlo. Dávají smysl, až bude kontrola levnější. RAG, fine-tuning nebo vlastní orchestrace přes SDK by měly vycházet z konkrétního nedostatku v deníku.
 
+Upřesnění od Jakuba (2026-09-25): postup už používá u 2–3 zákazníků a problémy zapisuje průběžně. Deník tedy existuje, jen není v tomto repozitáři. Přehled dalších technologií podle řešeného problému je v [Technologie pro agentní vývoj v .NET](agent-tooling-for-dotnet.md).
+
 Alternativa, pokud je cílem hlubší porozumění AI, ne produktivita ve vývoji: postavit malou vlastní aplikaci nad API modelu (tool use, agent loop, jednoduchý eval). Tuto preferenci Jakub zatím neupřesnil.
 
 ## Doporučený první experiment
